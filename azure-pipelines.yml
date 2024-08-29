@@ -24,8 +24,11 @@ jobs:
       set -ex
 
       az version
+      az upgrade
       az extension add -n ml
-    displayName: 'Add AzureML Extension'
+      az extension update -n ml
+      
+      displayName: 'Add AzureML Extension'
 
   - task: AzureCLI@2
     name: submit_azureml_job_task
@@ -58,3 +61,4 @@ jobs:
       resourceGroupName: $(resource-group)
       azureMLWorkspaceName: $(workspace)
       azureMLJobName: $(azureml_job_name_from_submit_job)
+      apiVersion: '2022-01-01'
