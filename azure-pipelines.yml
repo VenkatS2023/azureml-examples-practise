@@ -24,11 +24,8 @@ jobs:
       set -ex
 
       az version
-      
       az extension add -n ml
-      
-      
-      displayName: 'Add AzureML Extension'
+    displayName: 'Add AzureML Extension'
 
   - task: AzureCLI@2
     name: submit_azureml_job_task
@@ -53,7 +50,7 @@ jobs:
   dependsOn: SubmitAzureMLJob
   variables: 
     # We are saving the name of azureMl job submitted in previous step to a variable and it will be used as an inut to the AzureML Job Wait task
-    azureml_job_name_from_submit_job: $[ dependencies.SubmitAzureMLJob.outputs['submit_azureml_job_task.job_name'] ] 
+    azureml_job_name_from_submit_job: $[ dependencies.SubmitAzureMLJob.outputs['submit_azureml_job_task.JOB_NAME'] ] 
   steps:
   - task: AzureMLJobWaitTask@1
     inputs:
@@ -61,4 +58,3 @@ jobs:
       resourceGroupName: $(resource-group)
       azureMLWorkspaceName: $(workspace)
       azureMLJobName: $(azureml_job_name_from_submit_job)
-      apiVersion: '2022-01-01'
