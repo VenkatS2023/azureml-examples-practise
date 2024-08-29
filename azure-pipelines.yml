@@ -24,9 +24,9 @@ jobs:
       set -ex
 
       az version
-      az upgrade
+      
       az extension add -n ml
-      az extension update -n ml
+      
       
       displayName: 'Add AzureML Extension'
 
