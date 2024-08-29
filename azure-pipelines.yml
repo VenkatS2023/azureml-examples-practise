@@ -57,4 +57,4 @@ jobs:
       serviceConnection: $(service-connection)
       resourceGroupName: $(resource-group)
       azureMLWorkspaceName: $(workspace)
-      azureMLJobName: $(azureml_job_name_from_submit_job)
+      azureMLJobName: SubmitAzureMLJob
